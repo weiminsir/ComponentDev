@@ -1,0 +1,32 @@
+apply from: config
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    if (!is_debug) {
+        implementation project(':modelmvp')
+    }
+
+    implementation project(':comlib')
+    compile project(':componentbase')
+    testImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    implementation 'junit:junit:4.12'
+
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+    implementation 'com.squareup.retrofit2:retrofit:2.1.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.3.1'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.3.1'
+    implementation 'io.reactivex:rxandroid:1.2.1'
+    implementation 'io.reactivex:rxjava:1.2.1'
+
+    implementation 'cn.finalteam.rxgalleryfinal:library:1.0.9'
+    implementation 'com.android.support:recyclerview-v7:24.2.0'
+    implementation 'com.android.support:appcompat-v7:24.2.0'
+
+//支持以下主流图片加载器，开发者自行选择
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+
+}

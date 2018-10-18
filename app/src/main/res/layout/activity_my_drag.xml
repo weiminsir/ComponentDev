@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.ulang.ulangapp.widget.GestureDemoView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.ulang.ulangapp.MyDragActivity">
+
+    <RelativeLayout
+        android:id="@+id/ll_image"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@color/colorAccent"
+        android:orientation="vertical">
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/bg_intro_artist_color" />
+
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@color/blue" />
+
+
+</com.ulang.ulangapp.widget.GestureDemoView>
