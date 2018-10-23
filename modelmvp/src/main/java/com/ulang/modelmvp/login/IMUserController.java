@@ -2,7 +2,8 @@ package com.ulang.modelmvp.login;
 
 import com.ulang.modelmvp.NResult;
 
-import rx.Observable;
+import io.reactivex.Observable;
+
 
 public interface IMUserController {
 

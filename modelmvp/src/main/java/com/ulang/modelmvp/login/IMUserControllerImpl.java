@@ -4,7 +4,9 @@ import com.ulang.modelmvp.APIClient;
 import com.ulang.modelmvp.IMBaseController;
 import com.ulang.modelmvp.NResult;
 
-import rx.Observable;
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+
 
 public class IMUserControllerImpl extends IMBaseController implements IMUserController {
 
@@ -16,7 +18,7 @@ public class IMUserControllerImpl extends IMBaseController implements IMUserCont
     @Override
     public Observable<NResult> register(String username, String password) {
         return apiClient.register(username, password)
-                .compose(this.<NResult>applySchedulers());
+                .subscribeOn(AndroidSchedulers.mainThread());
     }
 
     @Override

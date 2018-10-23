@@ -1,13 +1,13 @@
 package com.ulang.modelmvp.login;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 
+import com.ulang.modelmvp.BaseFragment;
 import com.ulang.modelmvp.IMModelImlp;
 
-public class LoginFragment extends Fragment implements LoginContract.View {
+public class LoginFragment extends BaseFragment<LoginContract.Presenter> implements LoginContract.View {
 
     private LoginContract.Presenter presenter;
 
@@ -38,4 +38,8 @@ public class LoginFragment extends Fragment implements LoginContract.View {
         super.onDestroy();
         presenter.unsubscribe();
     }
+
+
+
+
 }

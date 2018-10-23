@@ -6,6 +6,5 @@ package com.ulang.modelmvp;
 
 public interface BasePresenter {
     void subscribe();
-
     void unsubscribe();
 }

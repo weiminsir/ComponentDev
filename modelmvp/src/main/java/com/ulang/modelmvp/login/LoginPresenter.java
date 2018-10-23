@@ -1,14 +1,14 @@
 package com.ulang.modelmvp.login;
 
-import com.ulang.modelmvp.NResult;
 
-import rx.Subscription;
-import rx.functions.Action1;
+import com.ulang.modelmvp.NResult;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
 
 public class LoginPresenter implements LoginContract.Presenter {
     LoginContract.View view;
     IMUserController module;
-    private Subscription subscription;
+    private Disposable disposable;
 
     public LoginPresenter(IMUserController module, LoginContract.View view) {
         this.module = module;
@@ -18,24 +18,23 @@ public class LoginPresenter implements LoginContract.Presenter {
 
     @Override
     public void login(String username, String password) {
-        subscription = module.login(username, password).subscribe(new Action1<NResult>() {
-            @Override
-            public void call(NResult nResult) {
+        disposable = module.login(username, password)
+                .compose(view.<NResult>bindToLife())
+                .subscribe(new Consumer<NResult>() {
+                    @Override
+                    public void accept(NResult nResult) throws Exception {
 
-            }
-        }, new Action1<Throwable>() {
-            @Override
-            public void call(Throwable throwable) {
-                view.onLoginError("登录错误");
-            }
-        });
+                    }
+                });
+
+
     }
 
     @Override
     public void unsubscribe() {
 
-        if (subscription != null && !subscription.isUnsubscribed()) {
-            subscription.unsubscribe();
+        if (disposable != null && disposable.isDisposed()) {
+            disposable.dispose();
         }
     }
 
